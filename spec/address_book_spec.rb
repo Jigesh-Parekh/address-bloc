@@ -36,5 +36,15 @@ require_relative '../models/address_book'
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
      end
    end
-
+   
+  describe '#remove_entry' do
+    it "finds and destroy entry from address book" do
+	book = AddressBook.new
+	book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+	book.add_entry('Jig', '555.555.5555', 'jig@jig.com')
+	book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+		#rspec is erroring out on my remove entry call not sure what the issue is
+	expect(book.entries.size).to eq 1
+    end
+  end
  end

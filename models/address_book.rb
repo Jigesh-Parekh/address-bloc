@@ -14,7 +14,16 @@ class AddressBook
 			end
 		index += 1
 	end
-
+	
+	def remove_entry(name, phone_number, email)
+		destroy = nil
+		entries.each do |entry| #delete from addressbook
+			if name == entry.name && phone == entry.phone && email == entry.email
+			destroy = entry
+			end
+		end
+		entries.delete(destroy) #delete from array
+	end
 
 	entries.insert(index, Entry.new(name, phone_number, email))
 	

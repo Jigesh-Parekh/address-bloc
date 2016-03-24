@@ -18,7 +18,7 @@ class AddressBook
 	def remove_entry(name, phone_number, email)
 		destroy = nil
 		entries.each do |entry| #delete from addressbook
-			if name == entry.name && phone == entry.phone && email == entry.email
+			if name == entry.name && phone_number == entry.phone_number && email == entry.email
 			destroy = entry
 			end
 		end

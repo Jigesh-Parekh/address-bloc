@@ -10,10 +10,11 @@ class MenuController
 
     	puts "Main Menu - #{address_book.entries.count} entries"
     	puts "1 - View all entries"
-    	puts "2 - Create an entry"
-    	puts "3 - Search for an entry"
-    	puts "4 - Import entries from a CSV"
-    	puts "5 - Exit"
+        puts "2 - Search by number"
+        puts "3 - Create an entry"
+    	puts "4 - Search for an entry"
+    	puts "5 - Import entries from a CSV"
+    	puts "6 - Exit"
 
     	puts "Enter you selection: "
 
@@ -26,17 +27,21 @@ class MenuController
                 main_menu
             when 2
                 system "clear"
-                create_entry
+                view_by_number
                 main_menu
             when 3
                 system "clear"
-                search_entries
+                create_entry
                 main_menu
             when 4
+                system "clear"
+                search_entries
+                main_menu
+            when 5
                 sytem "clear"
                 read_csv
                 main_menu
-            when 5
+            when 6
                 puts "Good-bye"
                 exit(0)
             else
@@ -60,6 +65,28 @@ class MenuController
             system "clear"
             puts "End of Entries"
     end
+
+    def view_by_number
+            system "clear"
+            puts "enter number: "
+            number = gets.chomp.to_i
+
+
+         
+           if number <= address_book.entries.count 
+                puts address_book.entries[number]
+           else
+                puts "unknown number return to menu"
+                main_menu
+           end
+
+           #thing to note, entries are 0 based when searced by indexed number
+           #I also started this project attempting to search for an array 
+           #by a specific phone number, not sure how feasible that is but 
+           #i am curious as to how to implement that
+            
+    end
+
 
     def create_entry
             system "clear"
@@ -109,6 +136,7 @@ class MenuController
                 entry_submenu(entry)
         end
     end
+
     
 end
 

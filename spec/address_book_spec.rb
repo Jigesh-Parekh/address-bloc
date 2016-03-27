@@ -48,12 +48,42 @@ require_relative '../models/address_book'
 
         expect(book_size).to eq 5
     end
+    it "imports the correct number of entries2" do
+        book.import_from_csv("entries_2.csv")
+        book_size = book.entries.size
+
+        expect(book_size).to eq 3
+    end
     def check_entry(entry, expected_name, expected_number, expected_email)
-    expect(entry.name).to eq expected_name
-    expect(entry.phone_number).to eq expected_number
-    expect(entry.email).to eq expected_email
+      expect(entry.name).to eq expected_name
+      expect(entry.phone_number).to eq expected_number
+      expect(entry.email).to eq expected_email
+    end
+   #____________entries_2 check____________________________________________
+
+    it "imports the 1st entry csv2" do
+        book.import_from_csv("entries_2.csv")
+        entry_one = book.entries[0]
+        #check the first entry
+        #check the parapates of the first entry    
+       check_entry(entry_one, "Derek", "555-555-5415", "Derek@blocmail.com")
+    end
+    it "imports the 2nd entry csv2" do
+        book.import_from_csv("entries_2.csv")
+        entry_two = book.entries[1]
+        #check the first entry
+        #check the parapates of the first entry
+        check_entry(entry_two, "Jig", "555-555-4854", "jig@blocmail.com")
+    end
+    it "imports the 3rd entry csv2" do
+        book.import_from_csv("entries_2.csv")
+        entry_three = book.entries[2]
+        #check the first entry
+        #check the parapates of the first entry
+        check_entry(entry_three, "Melissa", "555-555-3660", "melissa@blocmail.com")
     end
 
+   #_______________________________________________________________________
     it "imports the 1st entry" do
         book.import_from_csv("entries.csv")
         entry_one = book.entries[0]

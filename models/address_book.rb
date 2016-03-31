@@ -55,6 +55,11 @@ class AddressBook
         return nil
     end
 
+    def destroy_all
+        #entries = nil
+        @entries = []
+    end
+
     def add_entry(name, phone_number, email)
         index = 0
         entries.each do |entry|

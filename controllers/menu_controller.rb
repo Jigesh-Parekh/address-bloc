@@ -13,7 +13,8 @@ class MenuController
     	puts "2 - Create an entry"
     	puts "3 - Search for an entry"
     	puts "4 - Import entries from a CSV"
-    	puts "5 - Exit"
+        puts "5 - Destroy all entries"
+    	puts "6 - Exit"
 
     	puts "Enter you selection: "
 
@@ -33,10 +34,23 @@ class MenuController
                 search_entries
                 main_menu
             when 4
-                sytem "clear"
+                system "clear"
                 read_csv
                 main_menu
             when 5
+                system "clear"
+                puts "you sure? (y for yes n for no): "
+                answer = gets.chomp.to_s
+                if answer = 'y'
+                    address_book.destroy_all
+                    puts "Destroyed all documents"
+                    main_menu
+                else
+                    system "clear"
+                    puts "cancelling and returning to main"
+                    main_menu
+                end
+            when 6
                 puts "Good-bye"
                 exit(0)
             else
